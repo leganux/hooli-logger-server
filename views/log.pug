@@ -1,0 +1,91 @@
+html
+    head
+        title Hooli-logger-server in action
+        link(href="/public/bootstrap/bootstrap.css" rel="stylesheet")
+        link(href="/public/select2/css/select2.css" rel="stylesheet")
+    body(style="background-color:#000")
+        .row
+            .col-3
+                img.img-fluid(src="/public/hooli.jpg")
+            .col-6
+                .card
+                    .card-header
+                        .row
+                            .col-4
+                                label Apps
+                                select.form-control(multiple=true)#app
+                                label Sources
+                                select.form-control(multiple=true)#source
+                                label Types
+                                select.form-control#type
+                                    option(value="-1") Choose one
+                                    option(value="log") log
+                                    option(value="info") info
+                                    option(value="debug") debug
+                                    option(value="error") error
+                                    option(value="warn") warn
+                            .col-4
+                                label Log range start
+                                input.form-control(type="date")#start
+                                label Log range end
+                                input.form-control(type="date")#end
+                                label Find in logs
+                                input.form-control(type="text")#like
+                            .col-4
+                                label Number of lines (tail)
+                                input.form-control(type='number' value=100)#limit
+                                br
+                                button.btn.btn-dark.btn-block#apply Apply
+
+
+            .col-3
+                br
+                br
+                br
+                h5.text-white.text-center &copy; 2007-2022 leganux.net &nbsp;
+
+        .cointainer-fluid
+
+
+            .col-12
+                .card
+                    .card-header
+                        .row
+                            .col-10
+                                h5 Hooli-logger-server in action
+                            .col-2
+                                button.btn.btn-dark.btn-block#clear Clear
+
+                    .card-header( max-height="300px")
+                        .row
+                            .col-12.col-md-4
+                            .col-12.col-md-4
+                                canvas#myChart( max-height="200px")
+                            .col-12.col-md-4
+
+
+                    .card-body(style="overflow-y:auto; max-height:800px; height:800px;")
+                        table.table.table-striped
+                            thead.thead-dark
+                                tr
+                                    th(scope="col")  Time
+                                    th(scope="col")  Log
+                                    th(scope="col")  Type
+                                    th(scope="col")  App
+                                    th(scope="col")  Source
+                            tbody#preppend_here
+
+
+
+
+
+        script(src="/public/bootstrap/jquery.js")
+        script(src="/public/bootstrap/popper.js")
+        script(src="/public/bootstrap/moment.js")
+        script(src="/public/bootstrap/bootstrap.js")
+        script(src="/public/socket/socket.io.js")
+        script(src="/public/chartjs/chartjs.js")
+        script(src="/public/select2/js/select2.full.js")
+        script(src="/public/main.js")
+
+
