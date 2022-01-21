@@ -1,6 +1,6 @@
 const express = require('express')
 
-
+var cors = require('cors')
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const config = require('./config')
@@ -15,8 +15,6 @@ const io = require('socket.io')(http);
 
 
 const port = config.listen_port;
-
-
 
 app.use(cors());
 
