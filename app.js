@@ -16,8 +16,7 @@ const io = require('socket.io')(http);
 
 const port = config.listen_port;
 
-// Where we will keep books
-let books = [];
+
 
 app.use(cors());
 
@@ -54,6 +53,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/web', (req, res) => {
+    try {
+        res.status(200).render('log')
+    } catch (e) {
+
+    }
+});
+app.get('/login', (req, res) => {
     try {
         res.status(200).render('log')
     } catch (e) {

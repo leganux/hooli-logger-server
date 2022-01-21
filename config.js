@@ -8,4 +8,6 @@ module.exports = {
     db_password: '',
     db_filename: 'my_db.sqlite', // only for sqlite
     db_name: 'hooli',
+    user: 'hooli',
+    password: 'CFm7AWR3tezcuyBg',
 }

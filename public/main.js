@@ -7,7 +7,7 @@ $(document).ready(function () {
     socket.on("disconnect", function (data) {
         console.log('Cliente desconectado');
     });
-    let data = []
+   /* let data = []
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
         type: 'line',
@@ -24,7 +24,7 @@ $(document).ready(function () {
                 }
             }
         },
-    });
+    });*/
 
 
     $('#type').select2();
@@ -183,10 +183,89 @@ $(document).ready(function () {
 
     $('#apply').click()
 
+    $('#clse_modal').click(function () {
+        $('#modal_').modal('hide')
+    })
+
     $(document.body).on('click', '.contexto', function () {
         let reference = $(this).attr('reference')
         let app = $(this).attr('app')
         let source = $(this).attr('source')
+        console.log(reference, app, source)
+
+        $('#modal_').modal('show')
+        let body = {}
+
+        let start = Number(reference) - 10
+        let end = Number(reference) + 10
+
+        body.contexto = start + ',' + end
+        body.app = app
+        body.source = source
+        $('#preppend_here_after').html('')
+        $('#preppend_here_this').html('')
+        $('#preppend_here_before').html('')
+
+        $.getJSON('/log', body, function (data_) {
+            for (let data of data_?.data) {
+                let type = ''
+
+                switch (data?.type) {
+                    case 'log':
+                        type = '<span class="badge badge-primary">log</span>'
+                        break;
+                    case 'info':
+                        type = '<span class="badge badge-secondary">info</span>'
+                        break;
+                    case 'warn':
+                        type = '<span class="badge badge-warning">warn</span>'
+                        break;
+                    case 'debug':
+                        type = '<span class="badge badge-info">debug</span>'
+                        break;
+                    case 'error':
+                        type = '<span class="badge badge-danger">error</span>'
+                        break;
+                    case 'request':
+                        type = '<span class="badge badge-dark">request</span>'
+                        break;
+                    default:
+                        type = '<span class="badge badge-light">other</span>'
+                        break;
+                }
+
+
+                let html = '<tr class="contexto" reference="' + data._id + '" app="' + data.app + '"source="' + data.source + '">' +
+                    '<td>' +
+                    moment(data?.date).format() +
+                    '</td>' +
+                    '<td>' +
+                    data?.content +
+                    '</td>' +
+                    '<td>' +
+                    type +
+                    '</td>' +
+                    '<td>' +
+                    data?.app +
+                    '</td>' +
+                    '<td>' +
+                    data?.source +
+                    '</td>' +
+                    '</tr>'
+
+                if (data._id < Number(reference)) {
+                    $('#preppend_here_after').append(html);
+                }
+                if (data._id == Number(reference)) {
+                    $('#preppend_here_this').append(html);
+                }
+                if (data._id > Number(reference)) {
+                    $('#preppend_here_before').append(html);
+                }
+
+
+            }
+        })
     })
 
 })

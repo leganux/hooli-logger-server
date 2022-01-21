@@ -57,7 +57,7 @@ html
                                 button.btn.btn-dark.btn-block#clear Clear
 
                     .card-header( max-height="300px")
-                        .row
+                        //.row
                             .col-12.col-md-4
                             .col-12.col-md-4
                                 canvas#myChart( max-height="200px")
@@ -77,6 +77,48 @@ html
 
 
 
+
+        #modal_.modal.fade( aria-hidden='true', data-backdrop="static", data-keyboard="false")
+            .modal-dialog.modal-lg(role='document')
+                .modal-content
+                    .modal-header
+                        h5.modal-title Context
+                    .modal-body
+                        .card
+                            .card-header(style="overflow-y:auto; max-height:300px; height:300px;")
+                                table.table.table-striped
+                                    thead.thead-dark
+                                        tr
+                                            th(scope="col")  Time
+                                            th(scope="col")  Log
+                                            th(scope="col")  Type
+                                            th(scope="col")  App
+                                            th(scope="col")  Source
+                                    tbody#preppend_here_after
+
+                            .card-body(style="overflow-y:auto; max-height:300px; ")
+                                table.table.table-striped
+                                    thead.thead-dark
+                                        tr
+                                            th(scope="col")  Time
+                                            th(scope="col")  Log
+                                            th(scope="col")  Type
+                                            th(scope="col")  App
+                                            th(scope="col")  Source
+                                    tbody#preppend_here_this
+                            .card-footer(style="overflow-y:auto; max-height:300px; height:300px;")
+                                table.table.table-striped
+                                    thead.thead-dark
+                                        tr
+                                            th(scope="col")  Time
+                                            th(scope="col")  Log
+                                            th(scope="col")  Type
+                                            th(scope="col")  App
+                                            th(scope="col")  Source
+                                    tbody#preppend_here_before
+
+                    .modal-footer
+                        button.btn.btn-primary(type='button')#clse_modal OK
 
 
         script(src="/public/bootstrap/jquery.js")
