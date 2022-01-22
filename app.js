@@ -1,6 +1,6 @@
 const express = require('express')
 
-var cors = require('cors')
+
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const config = require('./config')
@@ -8,11 +8,26 @@ const db = require('./db')
 const moment = require('moment')
 const {Op} = require("sequelize");
 const path = require("path");
-
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
+var cron = require('node-cron');
+cron.schedule(config.log_rotate_cron, () => {
+    try {
+        db.logModel.destroy({
+            where: {
+                date: {
+                    [Op.lte]: moment().subtract(config.log_rotate_hours, "hours")
+                }
+            }
+        })
+        console.log('Log Rotate success')
+    } catch (e) {
+        console.error('Log rorate error ', e)
+    }
+
+});
 
 const port = config.listen_port;
 

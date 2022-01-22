@@ -1,4 +1,6 @@
 module.exports = {
+    log_rotate_cron: '0 * * * *',
+    log_rotate_hours: 12,
     listen_port: 3333,
     listen_port_socket: 3337,
     db_flavor: 'sqlite', /* sqlite, mariadb, mysql*/

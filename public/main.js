@@ -59,13 +59,35 @@ $(document).ready(function () {
                 break;
         }
 
+        let content = ''
+        if (data?.type == 'request') {
+            try {
+                let item = JSON.parse(data.content)
+                content = '<h3> ' + item.method + ' </h3>' +
+                    '<br>' +
+                    '<label> URL: ' + item.url + '</label>' +
+                    '<br>' +
+                    '<label> STATUS:' + item.status + '</label>' +
+                    '<br>' +
+                    '<label> Body:' + '</label> ' + JSON.stringify(item.body) +
+                    '<br>' +
+                    '<label> Query:' + '</label> ' + JSON.stringify(item.query) +
+                    '<br>' +
+                    '<label> Params:' + '</label> ' + JSON.stringify(item.params)
+            } catch (e) {
+                content = data.content
+            }
+        } else {
+            content = data.content
+        }
+
         $('#preppend_here').prepend('<tr class="contexto" reference="' + data._id + '" app="' + data.app + '"source="' + data.source + '">' +
 
             '<td>' +
             moment(data?.date).format() +
             '</td>' +
             '<td>' +
-            data?.content +
+            content +
             '</td>' +
             '<td>' +
             type +
@@ -144,13 +166,34 @@ $(document).ready(function () {
                         type = '<span class="badge badge-light">other</span>'
                         break;
                 }
+                let content = ''
+                if (data?.type == 'request') {
+                    try {
+                        let item = JSON.parse(data.content)
+                        content = '<h3> ' + item.method + ' </h3>' +
+                            '<br>' +
+                            '<label> URL: ' + item.url + '</label>' +
+                            '<br>' +
+                            '<label> STATUS:' + item.status + '</label>' +
+                            '<br>' +
+                            '<label> Body:' + '</label> ' + JSON.stringify(item.body) +
+                            '<br>' +
+                            '<label> Query:' + '</label> ' + JSON.stringify(item.query) +
+                            '<br>' +
+                            '<label> Params:' + '</label> ' + JSON.stringify(item.params)
+                    } catch (e) {
+                        content = data.content
+                    }
+                } else {
+                    content = data.content
+                }
 
                 $('#preppend_here').prepend('<tr class="contexto" reference="' + data._id + '" app="' + data.app + '"source="' + data.source + '">' +
                     '<td>' +
                     moment(data?.date).format() +
                     '</td>' +
                     '<td>' +
-                    data?.content +
+                    content +
                     '</td>' +
                     '<td>' +
                     type +
@@ -234,13 +277,34 @@ $(document).ready(function () {
                         break;
                 }
 
+                let content = ''
+                if (data?.type == 'request') {
+                    try {
+                        let item = JSON.parse(data.content)
+                        content = '<h3> ' + item.method + ' </h3>' +
+                            '<br>' +
+                            '<label> URL: ' + item.url + '</label>' +
+                            '<br>' +
+                            '<label> STATUS:' + item.status + '</label>' +
+                            '<br>' +
+                            '<label> Body:' + '</label> ' + JSON.stringify(item.body) +
+                            '<br>' +
+                            '<label> Query:' + '</label> ' + JSON.stringify(item.query) +
+                            '<br>' +
+                            '<label> Params:' + '</label> ' + JSON.stringify(item.params)
+                    } catch (e) {
+                        content = data.content
+                    }
+                } else {
+                    content = data.content
+                }
 
                 let html = '<tr class="contexto" reference="' + data._id + '" app="' + data.app + '"source="' + data.source + '">' +
                     '<td>' +
                     moment(data?.date).format() +
                     '</td>' +
                     '<td>' +
-                    data?.content +
+                    content +
                     '</td>' +
                     '<td>' +
                     type +
