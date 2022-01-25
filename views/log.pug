@@ -52,8 +52,10 @@ html
                 .card
                     .card-header
                         .row
-                            .col-10
+                            .col-9
                                 h5 Hooli-logger-server in action
+                            .col-1
+                                button.btn.btn-dark.btn-block#play Pause
                             .col-2
                                 button.btn.btn-dark.btn-block#clear Clear
 
@@ -65,15 +67,15 @@ html
                             .col-12.col-md-4
 
 
-                    .card-body(style="overflow-y:auto; max-height:800px; height:800px;")
+                    .card-body(style="overflow-y:auto; max-height:700px; height:700px;")
                         table.table.table-striped
                             thead.thead-dark
                                 tr
                                     th(scope="col")  Time
-                                    th(scope="col")  Log
                                     th(scope="col")  Type
                                     th(scope="col")  App
                                     th(scope="col")  Source
+                                    th(scope="col")  Log
                             tbody#preppend_here
 
 
@@ -91,10 +93,11 @@ html
                                     thead.thead-dark
                                         tr
                                             th(scope="col")  Time
-                                            th(scope="col")  Log
+
                                             th(scope="col")  Type
                                             th(scope="col")  App
                                             th(scope="col")  Source
+                                            th(scope="col")  Log
                                     tbody#preppend_here_after
 
                             .card-body(style="overflow-y:auto; max-height:300px; ")
@@ -102,20 +105,22 @@ html
                                     thead.thead-dark
                                         tr
                                             th(scope="col")  Time
-                                            th(scope="col")  Log
+
                                             th(scope="col")  Type
                                             th(scope="col")  App
                                             th(scope="col")  Source
+                                            th(scope="col")  Log
                                     tbody#preppend_here_this
                             .card-footer(style="overflow-y:auto; max-height:300px; height:300px;")
                                 table.table.table-striped
                                     thead.thead-dark
                                         tr
                                             th(scope="col")  Time
-                                            th(scope="col")  Log
+
                                             th(scope="col")  Type
                                             th(scope="col")  App
                                             th(scope="col")  Source
+                                            th(scope="col")  Log
                                     tbody#preppend_here_before
 
                     .modal-footer
